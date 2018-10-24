@@ -51,6 +51,7 @@ public class RedisMigrator {
             List<String> keys = scanResult.getResults();
             for (String key : keys) {
                 System.out.println(key);
+                boolean hasData = false;
                 // 获取有效时间
                 Long ttl = redisClient.ttl(key);
 
@@ -60,6 +61,7 @@ public class RedisMigrator {
                     String value = redisClient.getStr(key);
                     value = StringUtils.isBlank(value) ? "" : value;
                     redisClient.set(key, value);
+                    hasData = true;
                 }else if(RedisDataType.HASH.equals(dataType)){// hash
                     int hashCursor = 0;
                     do{
@@ -69,6 +71,7 @@ public class RedisMigrator {
                         for (Map.Entry<String, String> result : results) {
                             redisClient.hset(key, result.getKey(), result.getValue());
                         }
+                        hasData = true;
                     }while (hashCursor > 0);
                 }else if(RedisDataType.LIST.equals(dataType)){// list
                     long len = redisClient.llen(key);
@@ -83,7 +86,10 @@ public class RedisMigrator {
                         ScanResult<String> sscanResult = redisClient.sscan(key, setCursor, batchSize, setPattern);
                         setCursor = sscanResult.getCursor();
                         List<String> results = sscanResult.getResults();
-                        redisClient.sadd(key, results.toArray(new String[0]));
+                        if(results!=null && results.size()>0){
+                            redisClient.sadd(key, results.toArray(new String[0]));
+                            hasData = true;
+                        }
                     }while (setCursor > 0);
                 }else{// zset
                     int zsetCursor = 0;
@@ -94,10 +100,11 @@ public class RedisMigrator {
                         for (Tuple result : results) {
                             redisClient.zadd(key, result.getScore(), result.getElement());
                         }
+                        hasData = true;
                     }while (zsetCursor > 0);
                 }
 
-                if(ttl > 0){
+                if(ttl > 0 && hasData){
                     redisClient.expire(key, ttl.intValue());
                 }
             }
