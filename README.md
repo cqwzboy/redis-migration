@@ -24,7 +24,7 @@
      <version>2.7.3</version>  
     </dependency>
 
-## redis.properties
+## redis-migration.properties
 在classpath下创建redis-migration.properties文件，配置内容如下
 
     # 数据源    
