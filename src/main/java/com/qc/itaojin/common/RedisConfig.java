@@ -10,7 +10,7 @@ import java.util.Properties;
  * Created by fuqinqin on 2018/10/23.
  */
 public class RedisConfig {
-    private static final String REDIS_PROPERTIES_FILE = "redis.properties";
+    private static final String REDIS_PROPERTIES_FILE = "redis-migration.properties";
     private static Properties prop;
 
     /**

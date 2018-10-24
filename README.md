@@ -25,7 +25,7 @@
     </dependency>
 
 ## redis.properties
-在classpath下创建redis.properties文件，配置内容如下
+在classpath下创建redis-migration.properties文件，配置内容如下
 
     # 数据源    
     redis.from.host=10.168.154.97    
