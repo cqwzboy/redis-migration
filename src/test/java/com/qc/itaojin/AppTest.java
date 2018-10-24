@@ -2,10 +2,12 @@ package com.qc.itaojin;
 
 import static org.junit.Assert.assertTrue;
 
+import com.qc.itaojin.client.RedisClient;
+import com.qc.itaojin.client.RedisSimpleClient;
+import com.qc.itaojin.domain.ScanResult;
 import com.qc.itaojin.enums.RedisDataType;
 import org.junit.Before;
 import org.junit.Test;
-import redis.clients.jedis.Jedis;
 
 import java.util.List;
 import java.util.Map;
@@ -78,7 +80,7 @@ public class AppTest {
 
     @Test
     public void beginMigrate(){
-        System.out.println("耗时："+redisMigrator.migrateAll()+" 毫秒");
+        System.out.println("耗时："+redisMigrator.excute()+" 毫秒");
     }
 
 }

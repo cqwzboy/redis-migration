@@ -6,6 +6,9 @@ package com.qc.itaojin.enums;
 public enum RedisDataType {
     STRING("string"),
     HASH("hash"),
+    LIST("list"),
+    SET("set"),
+    ZSET("zset"),
     ;
 
     private String type;

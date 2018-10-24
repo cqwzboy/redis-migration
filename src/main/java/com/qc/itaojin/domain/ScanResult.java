@@ -1,5 +1,6 @@
-package com.qc.itaojin;
+package com.qc.itaojin.domain;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -11,9 +12,9 @@ public class ScanResult<T> {
 
     ScanResult(){}
 
-    ScanResult(int cursor, List<T> results){
+    public ScanResult(int cursor, List<T> results){
         this.cursor = cursor;
-        this.results = results;
+        this.results = results==null?new ArrayList<>():results;
     }
 
     public int getCursor() {
