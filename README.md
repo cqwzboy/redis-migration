@@ -28,15 +28,15 @@
 在classpath下创建redis-migration.properties文件，配置内容如下
 
     # 数据源    
-    redis.from.host=10.168.154.97    
+    redis.from.host=192.168.0.1    
     redis.from.port=6379    
-    redis.from.password=TJKpassword    
+    redis.from.password=password123    
     redis.from.dbIndex=9    
     redis.from.charset=utf-8    
     # 数据目的地    
-    redis.to.host=wangzhe-alarm.redis.rds.aliyuncs.com    
+    redis.to.host=192.168.0.2   
     redis.to.port=6379    
-    redis.to.password=XTlQMxsvH5    
+    redis.to.password=password2    
     redis.to.dbIndex=0    
     redis.to.charset=utf-8    
     redis.maxTotal=100    
