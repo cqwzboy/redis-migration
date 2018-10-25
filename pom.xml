@@ -84,4 +84,17 @@
             <url>http://192.168.4.13:8081/nexus/content/repositories/releases</url>
         </repository>
     </distributionManagement>
+
+    <!--<distributionManagement>
+        <repository>
+            <id>pri-aliyun-releases</id>
+            <name>Nexus Release Repository</name>
+            <url>http://47.106.201.17:8081/nexus/content/repositories/releases/</url>
+        </repository>
+        <snapshotRepository>
+            <id>pri-aliyun-snapshots</id>
+            <name>Nexus Snapshot Repository</name>
+            <url>http://47.106.201.17:8081/nexus/content/repositories/snapshots/</url>
+        </snapshotRepository>
+    </distributionManagement>-->
 </project>
